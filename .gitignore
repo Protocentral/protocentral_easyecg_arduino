@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*~
+
+# Arduino build artifacts
+build/
+*.hex
+*.bin
+*.elf
+*.o
+*.d
+
+# Logs
+*.log

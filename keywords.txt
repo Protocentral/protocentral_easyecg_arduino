@@ -1,0 +1,75 @@
+#######################################
+# Syntax Coloring Map For ProtoCentral easyECG
+#######################################
+
+#######################################
+# Class (KEYWORD1)
+#######################################
+
+easyECG	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+# Initialization
+begin	KEYWORD2
+isConnected	KEYWORD2
+
+# Single samples
+readRaw	KEYWORD2
+readRawUncorrected	KEYWORD2
+readVoltage	KEYWORD2
+readMicrovolts	KEYWORD2
+
+# Filtered pipeline
+update	KEYWORD2
+setSampling	KEYWORD2
+adcRateHz	KEYWORD2
+outputRateHz	KEYWORD2
+setNotch	KEYWORD2
+notchEnabled	KEYWORD2
+setLowPass	KEYWORD2
+setHighPass	KEYWORD2
+ecgFiltered	KEYWORD2
+ecgMicrovolts	KEYWORD2
+ecgUnfiltered	KEYWORD2
+ecgUnfilteredMicrovolts	KEYWORD2
+missedSamples	KEYWORD2
+resetFilters	KEYWORD2
+
+# Heart rate
+heartRate	KEYWORD2
+beatDetected	KEYWORD2
+lastRRMillis	KEYWORD2
+
+# Signal quality
+isSaturated	KEYWORD2
+mainsMicrovolts	KEYWORD2
+isLeadOff	KEYWORD2
+setLeadOffThreshold	KEYWORD2
+getLeadOffThreshold	KEYWORD2
+
+# Baseline
+calibrateBaseline	KEYWORD2
+setBaseline	KEYWORD2
+getBaseline	KEYWORD2
+
+# Low-level
+setDataRate	KEYWORD2
+setRange	KEYWORD2
+setMode	KEYWORD2
+setMux	KEYWORD2
+fullScaleVolts	KEYWORD2
+readConfig	KEYWORD2
+readSingleShot	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+EASYECG_I2C_ADDR_DEFAULT	LITERAL1
+EASYECG_I2C_ADDR_ALT	LITERAL1
+EASYECG_GAIN	LITERAL1
+EASYECG_DEFAULT_ADC_RATE	LITERAL1
+EASYECG_SATURATION_COUNTS	LITERAL1

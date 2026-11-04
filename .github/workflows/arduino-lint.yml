@@ -1,0 +1,35 @@
+name: Arduino Lint
+
+on:
+  push:
+    paths:
+      - "library.properties"
+      - "keywords.txt"
+      - "src/**"
+      - "examples/**"
+      - ".github/workflows/arduino-lint.yml"
+  pull_request:
+    paths:
+      - "library.properties"
+      - "keywords.txt"
+      - "src/**"
+      - "examples/**"
+      - ".github/workflows/arduino-lint.yml"
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Arduino Lint
+        uses: arduino/arduino-lint-action@v1
+        with:
+          # "submit" is the correct mode for a library not yet in the Library Manager
+          # index (it validates submission-readiness). After the repo is public and
+          # accepted into the index, switch this to "update" and optionally add
+          # "compliance: strict".
+          library-manager: submit
+          project-type: library

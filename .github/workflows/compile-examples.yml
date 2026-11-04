@@ -1,0 +1,89 @@
+name: Compile Examples
+on:
+  push:
+    paths:
+      - "src/**"
+      - "examples/**"
+      - "library.properties"
+      - ".github/workflows/compile-examples.yml"
+  pull_request:
+    paths:
+      - "src/**"
+      - "examples/**"
+      - "library.properties"
+      - ".github/workflows/compile-examples.yml"
+  workflow_dispatch:
+jobs:
+  build:
+    name: ${{ matrix.board.name }}
+    runs-on: ubuntu-24.04   # arduino/compile-sketches@v1 can't install its Python on ubuntu-latest (26.04)
+    strategy:
+      fail-fast: false
+      matrix:
+        board:
+          - name: Arduino Uno
+            fqbn: arduino:avr:uno
+            platform: arduino:avr
+          - name: Arduino Nano
+            fqbn: arduino:avr:nano
+            platform: arduino:avr
+          - name: Arduino Mega
+            fqbn: arduino:avr:mega
+            platform: arduino:avr
+          - name: Arduino Leonardo
+            fqbn: arduino:avr:leonardo
+            platform: arduino:avr
+          - name: Arduino Nano 33 BLE
+            fqbn: arduino:mbed_nano:nano33ble
+            platform: arduino:mbed_nano
+          - name: Arduino MKR WiFi 1010
+            fqbn: arduino:samd:mkrwifi1010
+            platform: arduino:samd
+          - name: ESP32 Dev Module
+            fqbn: esp32:esp32:esp32
+            platform: esp32:esp32
+            platforms-extra: |
+              - name: esp32:esp32
+                source-url: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+          - name: ESP32-S2
+            fqbn: esp32:esp32:esp32s2
+            platform: esp32:esp32
+            platforms-extra: |
+              - name: esp32:esp32
+                source-url: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+          - name: ESP32-C3
+            fqbn: esp32:esp32:esp32c3
+            platform: esp32:esp32
+            platforms-extra: |
+              - name: esp32:esp32
+                source-url: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+          - name: ESP8266
+            fqbn: esp8266:esp8266:nodemcuv2
+            platform: esp8266:esp8266
+            platforms-extra: |
+              - name: esp8266:esp8266
+                source-url: https://arduino.esp8266.com/stable/package_esp8266com_index.json
+          - name: Raspberry Pi Pico (RP2040)
+            fqbn: rp2040:rp2040:rpipico
+            platform: rp2040:rp2040
+            platforms-extra: |
+              - name: rp2040:rp2040
+                source-url: https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Compile examples
+        uses: arduino/compile-sketches@v1
+        with:
+          fqbn: ${{ matrix.board.fqbn }}
+          libraries: |
+            - source-path: ./
+          platforms: ${{ matrix.board.platforms-extra }}
+          sketch-paths: |
+            - examples/01.BasicReading
+            - examples/02.SerialPlotter
+            - examples/03.HeartRate
+            - examples/04.OpenView
+            - examples/05.Diagnostics
+          enable-deltas-report: false
+          enable-warnings-report: true
