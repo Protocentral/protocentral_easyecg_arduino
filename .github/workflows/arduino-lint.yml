@@ -27,9 +27,5 @@ jobs:
       - name: Arduino Lint
         uses: arduino/arduino-lint-action@v1
         with:
-          # "submit" is the correct mode for a library not yet in the Library Manager
-          # index (it validates submission-readiness). After the repo is public and
-          # accepted into the index, switch this to "update" and optionally add
-          # "compliance: strict".
-          library-manager: submit
+          library-manager: update
           project-type: library
