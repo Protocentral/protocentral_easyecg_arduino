@@ -9,19 +9,18 @@ Arduino library for the **ProtoCentral easyECG Breakout**: single-lead (Lead I) 
 
 ![ProtoCentral easyECG](assets/easyecg.jpg)
 
+## See it in OpenView
+
+![OpenView showing a steady heartbeat from easyECG on an ECG-paper grid: P wave, QRS spike and T wave on the filtered trace above and the unfiltered trace below, with a heart rate of 80 bpm and the signal check reading OK](assets/easyecg-openview.gif)
+
+The filtered ECG (top) and the unfiltered signal (bottom) in [OpenView](https://github.com/Protocentral/protocentral_openview), with heart rate and a signal check beside them, recorded from an ECG simulator. The `04.OpenView` example streams them; it needs OpenView 3.4 or later and the **easyECG Breakout** profile.
+
 ## Links
 
 | | |
 |---|---|
 | Product page | https://protocentral.com/product/easyecg-single-lead-ecg-breakout-qwiic/ |
 | Hardware design files | https://github.com/Protocentral/protocentral_easyecg_hardware |
-| easyISO isolated Qwiic adapter | https://protocentral.com/product/easyiso-isolated-qwiic-adapter/ |
-| easyISO hardware design files | https://github.com/Protocentral/protocentral_easyiso_hardware |
-| MicroPython + Raspberry Pi driver | https://github.com/Protocentral/protocentral-micropython-easyecg |
-| OpenView companion app | https://github.com/Protocentral/protocentral_openview |
-| INA333 datasheet | https://www.ti.com/lit/ds/symlink/ina333.pdf |
-| OPA2333 datasheet | https://www.ti.com/lit/ds/symlink/opa2333.pdf |
-| TLA2024 datasheet | https://www.ti.com/lit/ds/symlink/tla2024.pdf |
 
 ## How it works
 
@@ -124,6 +123,10 @@ The full API is documented in [ProtoCentral_easyECG.h](src/ProtoCentral_easyECG.
 ## Lead-off detection
 
 The board has no lead-off comparator, so the library infers lead-off from saturation, or from mains pickup above `setLeadOffThreshold()` (default 200 µV RMS). The default is **provisional**: measure your own with `05.Diagnostics` before relying on it.
+
+In OpenView, the **Signal** tile shows the result, and the heart rate dims while it isn't OK:
+
+![OpenView with an easyECG electrode pulled off: the trace wanders, the heart rate is dimmed and the Signal tile warns Lead-off or mains pickup](assets/easyecg-openview-lead-off.png)
 
 ## Examples
 
