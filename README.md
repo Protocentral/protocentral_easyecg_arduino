@@ -11,9 +11,9 @@ Arduino library for the **ProtoCentral easyECG Breakout**: single-lead (Lead I) 
 
 ## See it in OpenView
 
-![OpenView showing a steady heartbeat from easyECG on an ECG-paper grid: P wave, QRS spike and T wave on the filtered trace above and the unfiltered trace below, with a heart rate of 80 bpm and the signal check reading OK](assets/easyecg-openview.gif)
+![OpenView showing a steady heartbeat from easyECG on an ECG-paper grid: P wave, QRS spike and T wave on the filtered trace, with a heart rate of 80 bpm and the signal check reading OK](assets/easyecg-openview-single.gif)
 
-The filtered ECG (top) and the unfiltered signal (bottom) in [OpenView](https://github.com/Protocentral/protocentral_openview), with heart rate and a signal check beside them, recorded from an ECG simulator. The `04.OpenView` example streams them; it needs OpenView 3.4 or later and the **easyECG Breakout** profile.
+Your single-lead ECG in [OpenView](https://github.com/Protocentral/protocentral_openview), with heart rate and a signal check beside it, recorded from an ECG simulator. The `04.OpenView` example streams it; it needs OpenView 3.4 or later and the **easyECG Breakout** profile.
 
 ## Links
 
